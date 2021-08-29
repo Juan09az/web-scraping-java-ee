@@ -18,7 +18,7 @@ public class ValidadorURL {
             new URL(url).openStream().close();
             return true;
         }
-        catch (MalformedURLException exception) {
+        catch (IOException ex) {
             return false;
         }
     }

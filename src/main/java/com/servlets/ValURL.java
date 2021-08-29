@@ -3,11 +3,15 @@ package com.servlets;
 import com.modelo.*;
 import java.io.IOException;
 import java.io.PrintWriter;
-import static java.lang.System.out;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.jsoup.Connection;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 
 /**
  *
@@ -67,20 +71,35 @@ public class ValURL extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-         try (PrintWriter out = response.getWriter()) {
-             String tourl=request.getParameter("url");
-       out.println(request.getParameter("url"));
-       ValidadorURL vurl=new ValidadorURL();
-       out.println(vurl.urlValidador(tourl));
-        if(vurl.urlValidador(tourl)==true){
-            toJSON rjson = new toJSON();
-            response.setContentType("text/html");
-            response.getWriter().write(req.topJSON(tourl));
+        try (PrintWriter out = response.getWriter()) {
+            String tourl = request.getParameter("url");
+            out.println(tourl);
+            ValidadorURL vurl = new ValidadorURL();
+            out.println(vurl.urlValidador(tourl));
+            /* if(vurl.urlValidador(tourl)==true){
             out.println("La URL: "+tourl+" es valida.");
+            //out.println("Title: " +document.outerHtml());
     }else{
             out.println("No es valida.");
+        }*/
+            final String htmlText = "<!DOCTYPE html>" +
+            "    <html>" +
+            "    <head>" +
+            "       <title>Java Magazine</title>" +
+            "    </head>" +
+            "    <body>" +
+            "       <h1>Hello World!</h1>" +
+            "    </body>" +
+            "</html>";
+            
+            Document document = Jsoup.parse(htmlText);
+            Elements allElements=document.getAllElements();
+            for(Element element:allElements){
+                out.println(element.nodeName()+" "+element.ownText());
+            }
+                // In case of any IO errors, we want the messages written to the console
+
         }
-    }
     }
 
     /**
