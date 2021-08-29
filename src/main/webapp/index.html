@@ -1,14 +1,244 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Start Page</title>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    </head>
-    <body>
-        <h1>Hello World!</h1>
-        <form action="Servlet" method="post">
-            <input type="submit" value="ENVIAR">
-            <h1>prueba</h1>
-        </form>
-    </body>
+<head>
+	<title>Principal</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale-1, maximum-scale-1">
+	<link href="styles.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+	<section id="contenedor" >
+		<section id="cabecera">
+			<h1>Archivos HTML- WEB SCRAPING</h1>
+			<div id="logoUrl">
+				<div id="logo">
+					<img src="LogoPag.png">
+				</div>
+				<!-- Cambiar div por form cuando ya se implemente Ajax-->
+				<form id="env-url" method="post" action="ValURL">
+					<input type="text" name="url" id="url" placeholder="Ingresar URL...">
+					<input type="submit" name="analizar" id="analizar" value="Analizar">
+				</form>
+
+			</div>
+		</section>
+		<section id="sec-menu" style="display: none">
+			<ul class="menu">
+				<li><a id="tamaño" href="#tamaño" onclick="seccion(1)" class="conf-esp">Tamaño en <br>KBytes</a></li>
+				<li><a id="lineas" href="#lineas" onclick="seccion(2)">Líneas</a></li>
+				<li><a id="ocurrencia" href="#ocurrencia" onclick="seccion(3)" class="conf-esp">Ocurrencia de <br>palabras</a></li>
+				<li><a id="enlaces" href="#enlaces" onclick="seccion(4)">Enlaces</a></li>
+				<li><a id="descargar" href="#descargar" onclick="seccion(5)">Descargar imágenes</a></li>
+				<li><a id="sitioos" href="#sitioos" onclick="seccion(6)">Sitios</a></li>
+				<li><a id="archivos" href="#archivos" onclick="seccion(7)">Archivos</a></li>
+			</ul>
+		</section>
+		<section id="contenido" style="display: none">
+			<div id="contenid" class="scc">
+				<h2>Tamaño en Kbytes</h2>
+					<br></b><label>XXXXXXXXXXXXXXXXX</label>
+			</div>
+
+			<div class="scc">
+				<h2>Lineas</h2>
+				<section id="cont-linea">
+					Cantidad 
+					<div id="div-line"><input type="text" class="inStyle" id="cant" value="XXXXXXXXX" readonly></label></div><br>
+					Tamaño 
+					<div id="div-line"><input type="text" class="inStyle" id="tam" value="XXXXXXXXX" readonly></label></div>
+				</section>
+			</div>
+
+			<div class="scc">
+				<h2>Ocurrencia de palabras</h2>
+				<section id="cont-ocurrencia">
+					<table class="table">
+						<thead class="table-light">
+							<tr>
+								<th>Palabra</th>
+								<th>Cantidad</th>	
+							</tr>
+						</thead>
+						<tbody id="bodyTabla">
+							<tr>
+								<td>Celda 1</td>
+								<td>Celda 2</td>
+							</tr>
+							<tr>
+								<td>Celda 3</td>
+								<td>Celda 4</td>
+							</tr>
+							<tr>
+								<td>Celda 5</td>
+								<td>Celda 6</td>
+							</tr>
+							<tr>
+								<td>Celda 1</td>
+								<td>Celda 2</td>
+							</tr>
+							<tr>
+								<td>Celda 3</td>
+								<td>Celda 4</td>
+							</tr>
+							<tr>
+								<td>Celda 5</td>
+								<td>Celda 6</td>
+							</tr>
+							<tr>
+								<td>Celda 1</td>
+								<td>Celda 2</td>
+							</tr>
+							<tr>
+								<td>Celda 3</td>
+								<td>Celda 4</td>
+							</tr>
+							<tr>
+								<td>Celda 5</td>
+								<td>Celda 6</td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
+			</div>
+
+			<div class="scc">
+				<h2>Enlaces</h2>
+				<section id="cont-desImg">
+					<table class="table">
+						<thead class="table-light">
+							<tr>
+								<th>Enlaces</th>
+							</tr>
+						</thead>
+						<tbody id="bodyTabla">
+							<tr class="divisor">
+								<td rowspan="4">España</td>
+							</tr>
+							<tr>
+								<td>Cantidad</td>
+								<td>10</td>		
+							</tr>
+							<tr>
+								<td>Cantidad</td>
+								<td>10</td>
+							</tr>
+							<tr>
+								<td>Cantidad</td>
+								<td >10</td>
+							</tr>
+							<tr class="divisor">
+								<td rowspan="5">España</td>
+							</tr>
+							<tr>
+								<td>Cantidad</td>
+								<td>10</td>
+							</tr>
+							<tr>
+								<td>Cantidad</td>
+								<td>10</td>
+							</tr>
+							<tr>
+								<td>Cantidad</td>
+								<td >10</td>
+							</tr>
+							<tr>
+								<td>Cantidad</td>
+								<td >10</td>
+							</tr>
+							<tr class="divisor">
+								<td rowspan="5">España</td>
+							</tr>
+							<tr>
+								<td>Cantidad</td>
+								<td>10</td>
+							</tr>
+							<tr>
+								<td>Cantidad</td>
+								<td>10</td>
+							</tr>
+							<tr>
+								<td>Cantidad</td>
+								<td >10</td>
+							</tr>
+							<tr>
+								<td>Cantidad</td>
+								<td >10</td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
+			</div>
+
+			<div class="scc">
+				<h2>Descargar Im&aacute;genes</h2>
+				<section id="cont-desImg">
+					<table class="table">
+						<thead class="table-light">
+							<tr>
+								<th>Imágenes</th>
+							</tr>
+						</thead>
+						<tbody id="bodyTabla">
+							<tr>
+								<td>Celda 1</td>
+							</tr>
+							<tr>
+								<td>Celda 3</td>
+							</tr>
+							<tr>
+								<td>Celda 5</td>
+							</tr>
+							<tr>
+								<td>Celda 1</td>
+							</tr>
+							<tr>
+								<td>Celda 3</td>
+							</tr>
+							<tr>
+								<td>Celda 5</td>
+							</tr>
+							<tr>
+								<td>Celda 1</td>
+							</tr>
+							<tr>
+								<td>Celda 3</td>
+							</tr>
+							<tr>
+								<td>Celda 5</td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
+			</div>
+
+			<div class="scc">
+				<h2>Sitios</h2>
+				<section id="cont-sitios">
+					<br><br><br><br><label>Requiere logueo/ No requiere logueo</label><br><br><br><br><br><br>
+					<label>Tiene sitios con captura de datos / No<br>
+					Tiene sitios con captura de datos</label>
+				</section>
+			</div>
+
+			<div class="scc">
+				<h2>Archivos</h2>
+				<section id="cont-archivos">
+					<br><br>
+					<ul>
+						<li>XXXXXXXXXXXXXXXX</li>
+						<li>XXXXXXXXXXXXXXXXxx</li>
+						<li>XXXXXXXXXXXXXXXXx</li>
+						<li>XXXXXXXXXXXXXXXXxxxx</li>
+						<li>XXXXXXXXXXXXXxxx</li>
+						<li>XXXXXXXXXXXXXxxxxx</li>
+					</ul>
+				</section>
+			</div>
+
+		</section>
+
+	</section>
+
+	<script type="text/javascript" src="eventos.js"></script>
+</body>
 </html>

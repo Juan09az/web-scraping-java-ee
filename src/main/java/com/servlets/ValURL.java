@@ -1,11 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+package com.servlets;
 
+import com.modelo.*;
 import java.io.IOException;
 import java.io.PrintWriter;
+import static java.lang.System.out;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -13,9 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author cesit
+ * @author camil
  */
-public class Servlet extends HttpServlet {
+public class ValURL extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,10 +32,10 @@ public class Servlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Servlet</title>");            
+            out.println("<title>Servlet ValURL</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet Servlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet ValURL at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -69,7 +67,20 @@ public class Servlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+         try (PrintWriter out = response.getWriter()) {
+             String tourl=request.getParameter("url");
+       out.println(request.getParameter("url"));
+       ValidadorURL vurl=new ValidadorURL();
+       out.println(vurl.urlValidador(tourl));
+        if(vurl.urlValidador(tourl)==true){
+            toJSON rjson = new toJSON();
+            response.setContentType("text/html");
+            response.getWriter().write(req.topJSON(tourl));
+            out.println("La URL: "+tourl+" es valida.");
+    }else{
+            out.println("No es valida.");
+        }
+    }
     }
 
     /**

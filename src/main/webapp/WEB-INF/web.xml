@@ -4,9 +4,17 @@
         <servlet-name>Servlet</servlet-name>
         <servlet-class>Servlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ValURL</servlet-name>
+        <servlet-class>com.servlets.ValURL</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Servlet</servlet-name>
         <url-pattern>/Servlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ValURL</servlet-name>
+        <url-pattern>/ValURL</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
